@@ -1,0 +1,30 @@
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b444c;
+}
+
+.login-container {
+    height: 60%;
+    width: 50%;
+    background-color: white;
+}
+
+.login-container>.row {
+    height: 100%;
+}
+
+.login-sidebar {
+    background-color: #002C35;
+}
+
+.login-form {
+    background-color: #EEEEEE;
+    margin: 5px;
+    height: 98%;
+    border-radius: 5px;
+    padding: 1rem;
+    color: black;
+}

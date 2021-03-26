@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #1b444c !important;
+    color: white !important;
+}
+
+.main-bg-color {
+    background-color: #002b36;    
+}
+
+.main-heading-bg {
+    background-color: #003741;
+}
+
+.content-wrapper {
+    margin: 0 2rem;
+}
+
+.login-form .text-title {
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white;
+}
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+
+.course-preview-section {
+    background-color: #003741;
+    color: white;
+    padding: 0.5rem 0.8rem;
+}
