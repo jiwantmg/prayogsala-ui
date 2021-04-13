@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div class="conatiner-fluid" *ngIf="isUserLoggedIn; else emptyLayout">
+ 
+    <!-- Header area ended -->
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</div>
+<ng-template #emptyLayout>
+    <div>
+        <router-outlet></router-outlet>
+    </div>    
+</ng-template>

@@ -1,0 +1,24 @@
+<mat-accordion class="">
+    <mat-expansion-panel *ngFor="let s of syllabus; let i=index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <span>
+                    {{s.order}}. {{s.chapterName}}
+                </span>
+            </mat-panel-title>
+            <mat-panel-description>
+                <span class="pull-right ml-auto font-small" [ngClass]="{'text-danger': s.topics.length === 0, 'text-success': s.topics.length != 0}">
+                    {{getLectureNumber(s.topics)}}
+                </span>     
+            </mat-panel-description>            
+        </mat-expansion-panel-header>
+        <div class="border-top">        
+            <app-topic-list [topics]="s.topics" [chapter]="s"></app-topic-list>
+            <a href="javascript:void(0)" color="warn" (click)="openNewTopic(s)" *ngIf="utype=='teacher'">Add New</a>
+        </div>  
+        <mat-action-row>                
+            <button mat-button color="warn" (click)="prevStep()" *ngIf="i != 0">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()" *ngIf="i != (syllabus.length -1)">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>

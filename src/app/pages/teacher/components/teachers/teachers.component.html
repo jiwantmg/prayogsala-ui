@@ -1,0 +1,17 @@
+<table class="table text-white table-sm">
+    <tr>
+        <td>NAME</td>
+        <td>COURSE COUNT</td>
+        <td>JOIN DATE</td>
+        <td>ACTION</td>
+    </tr>
+    <tr *ngFor="let teacher of teachers">
+        <td>{{teacher.firstName }} {{ teacher.lastName }}</td>
+        <td>1</td>
+        <td>2020-2-2</td>
+        <td>
+            <a class="btn btn-primary btn-sm">Update</a>
+            <a class="btn btn-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+</table>

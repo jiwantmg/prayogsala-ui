@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  role = "student";
-  constructor() { }
-
-  ngOnInit(): void {
+  role: string = "";
+  constructor(
+    private store: Store<{context}>
+  )
+  {
   }
-
+  ngOnInit(): void {    
+    this.store.select(state => state.context).subscribe(
+      (res) => {        
+         if(res.auth.isLogggedIn)
+         {
+           this.role = res.auth.user.role;
+         }
+      }
+    );
+  }
 }

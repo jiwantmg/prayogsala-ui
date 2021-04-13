@@ -1,2 +1,5 @@
-<app-user-dashboard *ngIf="role == 'student'"></app-user-dashboard>
-<app-teacher-dashboard *ngIf="role == 'teacher'"></app-teacher-dashboard>
+<div class="container p-2">
+    <app-user-dashboard *ngIf="role == 'student'"></app-user-dashboard>
+    <app-teacher-dashboard *ngIf="role == 'teacher'"></app-teacher-dashboard>
+    <app-admin-dashboard *ngIf="role == 'admin'"></app-admin-dashboard>
+</div>

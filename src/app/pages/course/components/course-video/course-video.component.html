@@ -1,0 +1,11 @@
+<div class="card m-4">
+    <div class="card-body">
+        <h2>Choose video for topic</h2>
+        <input type="file" (change)="onFileSelected($event)">
+        <button class="btn btn-primary" (click)="onUpload()">Upload</button>
+        <label>{{status}}</label>
+        <div class="progress">
+           <div class="progress-bar" role="progressbar"  aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: status}"></div>
+         </div>
+    </div>
+</div>

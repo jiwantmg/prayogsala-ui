@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { CourseModule } from './course/course.module';
 import { RouterModule } from '@angular/router';
+import { PmaterialModule } from './pmaterial.module';
 
 
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    DashboardModule,
-    CourseModule,
+  imports: [    
+    PmaterialModule,
     RouterModule.forChild([
       {
         path: '',
@@ -21,6 +17,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'teachers',
+        loadChildren: () => import('./teacher/teacher.module').then(m => m.TeacherModule)
+      },
+      {
+        path: 'courses',
+        loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
       }
     ])
   ]

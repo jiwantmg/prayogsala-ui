@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row py-4">        
+        <div class="col-md-9 border-right" *ngIf="course">
+            <div class="row">
+                <div class="d-block">
+                    <p class="course-title">{{course.courseTitle}}</p>
+                </div>
+                <div class="col-md-12">
+                    <span class="m-2 pull-left text-success"><h3>Course Content</h3></span>
+                    <a class="btn btn-outline-primary pull-left" (click)="newChapter()" *ngIf="utype=='teacher'">New Content</a>
+                </div>
+            </div>
+            <app-course-syllabus [syllabus]="syllabus"></app-course-syllabus>         
+        </div>
+        <div class="col-md-3">
+            
+        </div>
+    </div>
+</div>

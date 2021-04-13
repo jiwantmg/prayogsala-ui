@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="chapter">Chapter Name</label>
+                <input type="text" class="form-control" id="chapter" formControlName="chapter">
+            </div>
+            <div class="form-group">
+                <label for="chapter">Order</label>
+                <input type="text" class="form-control" id="chapter" formControlName="order">
+            </div>            
+            <div class="button-group">
+                <button class="btn btn-success" (click)="save()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

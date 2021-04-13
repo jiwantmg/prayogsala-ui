@@ -5,7 +5,7 @@ body {
 }
 
 .main-bg-color {
-    background-color: #002b36;    
+    background-color: #002b36 !important;    
 }
 
 .main-heading-bg {
@@ -33,3 +33,36 @@ body {
     color: white;
     padding: 0.5rem 0.8rem;
 }
+
+.preview-button {
+    min-height: 100px;
+    min-width: 10px;    
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 5px;    
+}
+
+.content-center
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-item-active-zoom:hover{
+    cursor: pointer;
+    background-color: #03485a !important;
+    font-weight: bold;
+    transform: scale(1.001);
+    transition: .15s linear;
+}
+
+.bg-dark > .mat-dialog-container {
+    background-color: black;
+    color: white;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

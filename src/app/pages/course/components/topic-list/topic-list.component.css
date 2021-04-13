@@ -1,0 +1,17 @@
+ul{
+    padding: 0px;
+    
+}
+
+.topic-list-item {
+    list-style: none;    
+}
+
+.topic-list-item > .topic-link {
+    text-decoration: none;
+}
+
+.disable-link {
+  color: darkgray;
+  pointer-events: none;
+}

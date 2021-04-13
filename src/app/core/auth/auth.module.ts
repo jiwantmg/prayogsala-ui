@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './store/auth.effect';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    EffectsModule.forFeature([AuthEffects])
   ]
 })
 export class AuthModule { }
