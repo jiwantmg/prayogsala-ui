@@ -12,6 +12,8 @@ import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
 import { JwtInterceptor } from './core/_helpers/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CategoryEffects} from 'src/app/pages/categories/store/category.effects';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(appStore.reducers),
-    EffectsModule.forRoot(),
+    EffectsModule.forRoot([CategoryEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production      

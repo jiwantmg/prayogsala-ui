@@ -1,0 +1,38 @@
+<!-- <div class="card card-inverse card-info height-full">
+    <img class="card-img-top">
+    <div class="card-block height-full">
+        <figure class="profile">
+            <img [src]="getImageName(course.thumbnail)" class="profile-avatar" alt="">
+        </figure>
+        <a href="#" class="card-title mt-3">{{course.courseTitle}}</a>
+        <div class="card-text">
+            <ul class="course-summary-list">
+                <li>
+                    <span>42</span> Students                    
+                </li>
+                <li>
+                    <span>100</span> Comments
+                </li>
+            </ul>            
+        </div>
+    </div>
+    <div class="card-footer">
+        <small>Last updated 3 mins ago</small>
+        <button class="btn btn-info float-right btn-sm" (click)="enrollStudent()" *ngIf="utype=='teacher'">View</button>
+        <button class="btn btn-info float-right btn-sm" (click)="viewCourse()" *ngIf="utype=='student' && is_enrolled">View</button>
+        <button class="btn btn-info float-right btn-sm" (click)="enrollStudent()" *ngIf="utype=='student' && !is_enrolled">Enroll</button>
+    </div>
+</div> -->
+
+<div class="course-card mx-1">
+    <img [src]="getImageName(course.image)" class="card-img-top" alt="...">
+    <div class="card-body p-1">
+        <h5 class="card-title">The Complete JavaScript Course 2020: Build Real Projects</h5>
+    </div>
+    <div class="card-footer">
+        <small>Last updated 3 mins ago</small>
+        <!-- <a class="btn btn-info btn-sm" (click)="enrollStudent()" *ngIf="utype=='teacher'">View</a> -->
+        <a class="btn btn-info btn-sm" (click)="viewCourse()" *ngIf="utype=='student'">View</a>
+        <a class="btn btn-info btn-sm" (click)="enrollStudent()">Enroll</a>
+    </div>
+</div>

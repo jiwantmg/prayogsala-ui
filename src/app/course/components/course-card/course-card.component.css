@@ -1,0 +1,66 @@
+/* .filter-section {
+    margin: 1rem 0;
+}
+
+.course-preview-section {
+    margin: 2rem 0;
+}
+
+.course-card-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.course-card {
+    height: 250px;
+    width: 200px;
+    background-color: #002b36;
+}
+
+.course-card:not(:first-child) {
+    margin: 0 0.5rem;
+}
+
+
+/* FITLER BUTTONS */
+/* .btn-filter {
+    background-color: #003741;
+    color: white;
+    font-weight: bold;
+    margin: 0 2px;
+} */
+
+.filter-section {
+    margin: 1rem 0;
+}
+
+.course-preview-section {
+    margin: 2rem 0;
+}
+
+.course-card-list {
+    display: flex;
+    flex-direction: row;
+}
+.card-title {
+    font-size: 1rem;
+}
+.course-card {
+    min-height: 250px;
+    width: 200px;
+    background-color: #002b36;
+}
+
+.course-card:not(:first-child) {
+    margin: 0 0.5rem;
+}
+
+
+/* FITLER BUTTONS */
+.btn-filter {
+    background-color: #003741;
+    color: white;
+    font-weight: bold;
+    margin: 0 2px;
+}
+

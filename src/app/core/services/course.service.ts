@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CourseService {
- 
+
   constructor(
     private http: HttpClient
   ) { }
@@ -23,6 +23,11 @@ export class CourseService {
   getAllCourse() {
     return this.http.get(`${environment.server}/courses`);
   }
+
+  getAllPublicCourse() {
+    return this.http.get(`${environment.server}/public/courses`);
+  }
+  
 
   getCourse(id: string) {
     return this.http.get(`${environment.server}/courses/${id}`);
@@ -48,10 +53,18 @@ export class CourseService {
   uploadVideo(chapter: any, selectedFile: File, topic) {
     const fd = new FormData();
     fd.append('video',selectedFile, selectedFile.name);
-    fd.append('topic', topic.topic);
-    return this.http.post(`${environment.server}/courses/${chapter.id}/${topic.id}/video`, fd, {
+    return this.http.post(`${environment.server}/courses/${chapter.courseId}/chapters/${chapter.chapterId}/topics/${topic.topicId}/video`, fd, {
       reportProgress: true,
       observe: 'events'
     });
   }
+
+  getTopCourses() {
+    return this.http.get(`${environment.server}/courses/tops`);
+  }
+
+  enrollStudent(id: any) {
+    return this.http.get('');
+  }
+ 
 }

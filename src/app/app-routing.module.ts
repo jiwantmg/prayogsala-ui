@@ -10,20 +10,27 @@ import { AuthGuard } from "./core/auth/_guard/auth.guard";
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'pages'
+                redirectTo: 'course'
               },
               {
                 path: 'login',
-                component: LoginComponent
+                component: LoginComponent                
               },
               {
                 path: 'register',
-                component: RegisterComponent
+                component: RegisterComponent,
+                data: {
+                  isPublic: true
+                }
+              },
+              {
+                path: 'course',
+                loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
               },
               {
                 path: 'pages',
                 loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
-                canActivate: [AuthGuard]
+                canActivate: [AuthGuard]               
               }
         ])
     ],

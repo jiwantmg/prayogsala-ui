@@ -15,7 +15,8 @@ import { CourseSyllabusComponent } from './components/course-syllabus/course-syl
 import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { CourseVideoComponent } from './components/course-video/course-video.component';
-
+import { PreviewVideoComponent } from './components/preview-video/preview-video.component';
+import { VgCoreModule, } from 'ngx-videogular';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CourseVideoComponent } from './components/course-video/course-video.com
     CourseSyllabusComponent,
     NewTopicComponent,
     TopicListComponent,
-    CourseVideoComponent
+    CourseVideoComponent,
+    PreviewVideoComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { CourseVideoComponent } from './components/course-video/course-video.com
     PmaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    VgCoreModule,
     StoreModule.forFeature(fromCourse.courseFeatureKey, fromCourse.reducer),
     EffectsModule.forFeature([CourseEffects])
   ],

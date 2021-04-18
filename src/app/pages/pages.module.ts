@@ -25,6 +25,10 @@ import { PmaterialModule } from './pmaterial.module';
       {
         path: 'courses',
         loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
+      },
+      {
+        path: 'categories',
+        loadChildren: () => import('./categories/categories.module').then(m => m.CategoriesModule)
       }
     ])
   ]

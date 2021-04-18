@@ -3,7 +3,7 @@
         <ul>
             <li class="topic-list-item d-flex" *ngFor="let topic of topics; let i = index">
                 <span class="text-primary font-weight-bold mx-1">{{ i + 1 }}. </span>   
-                <a href="javascript:void(0)" class="topic-link" [ngClass]="{'disable-link':topic.video == null}" (click)="preview(topic)">{{topic.topicName}}</a>
+                <a href="javascript:void(0)" class="topic-link" [ngClass]="{'disable-link':topic.videoId == null}" (click)="preview(topic)">{{topic.topicName}}</a>
                 <div class="button-group d-inline-block ml-auto pull-right" *ngIf="utype=='teacher'">
                     <a href="javascript:void(0)" class="mx-2 text-success" (click)="uploadVideo(topic)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-reels" viewBox="0 0 16 16">

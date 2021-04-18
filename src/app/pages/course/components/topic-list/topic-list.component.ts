@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
 import { CourseVideoComponent } from '../course-video/course-video.component';
+import { PreviewVideoComponent } from '../preview-video/preview-video.component';
 
 @Component({
   selector: 'app-topic-list',
@@ -31,11 +32,12 @@ export class TopicListComponent implements OnInit {
   }
 
   preview(topic) {
-    // const dialog = this.matDialog.open(PreviewVideoComponent,{
-    //   data: {
-    //     video: topic.video
-    //   }
-    // });     
+    const dialog = this.matDialog.open(PreviewVideoComponent,{
+      data: {
+        video: topic.video
+      },
+      panelClass: 'mat-dialog-padding-0'
+    });     
  }
  
  uploadVideo(topic) {

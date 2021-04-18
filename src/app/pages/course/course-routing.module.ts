@@ -11,7 +11,7 @@ const routes: Route[] = [
     },
     {
         path: ":id",
-        component: CourseDetailComponent
+        component: CourseDetailComponent        
     }
 ];
 
