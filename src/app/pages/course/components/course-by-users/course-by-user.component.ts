@@ -6,26 +6,42 @@ import * as courseAction from '../../store/course.actions';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-course-by-teachers',
-  templateUrl: './course-by-teachers.component.html',
-  styleUrls: ['./course-by-teachers.component.css']
+  selector: 'app-course-by-user',
+  templateUrl: './course-by-user.component.html',
+  styleUrls: ['./course-by-user.component.css']
 })
-export class CourseByTeachersComponent implements OnInit {
+export class CourseByUserComponent implements OnInit {
   courses: any[] = [];
+  user: any;
   constructor(
     private dialog: MatDialog,
-    private store: Store<{course}>,
+    private store: Store<{course, context}>,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.store.select(state => state.course).subscribe(
+    this.store.select(state => state).subscribe(
       (res: any) => {
-        this.courses = res.list
+        this.courses = res.course.list
+        this.user = res.context.auth.user;
       }
     );
 
-    this.store.dispatch(courseAction.loadCourses());
+    this.loadCourses();
+    
+  }
+
+  loadCourses()
+  {
+    if(this.user.role == "admin")
+    {
+      this.store.dispatch(courseAction.loadCourses({data: {type: 'all'}}));
+    }else if(this.user.role == "teacher")
+    {
+      this.store.dispatch(courseAction.loadCourses({data: {type: 'teacher'}}));
+    }else {
+      this.store.dispatch(courseAction.loadCourses({data: {type: 'enrolled'}}));
+    }
   }
 
   newCourseForm()
@@ -40,7 +56,7 @@ export class CourseByTeachersComponent implements OnInit {
       res => {
         if(res)
         {
-          this.store.dispatch(courseAction.loadCourses()); 
+          this.loadCourses();
         }
       }
     )

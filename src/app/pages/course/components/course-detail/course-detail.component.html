@@ -10,10 +10,17 @@
                     <a class="btn btn-outline-primary pull-left" (click)="newChapter()" *ngIf="utype=='teacher'">New Content</a>
                 </div>
             </div>
-            <app-course-syllabus [syllabus]="syllabus"></app-course-syllabus>         
+            <app-course-syllabus [syllabus]="syllabus" [paidStatus]="paidStatus"></app-course-syllabus>         
         </div>
         <div class="col-md-3">
-            
+            <!-- check if course is paid or not             -->
+            <div *ngIf="!isCoursePaid()">
+                <div class="alert alert-danger" role="alert">
+                    You have not purchased this course yet, <br>
+                    please purchase to unlock all the topics  <br>
+                    <a class="btn btn-success" (click)="makePurchase()">Purcahse Now</a>                   
+                </div>
+            </div>
         </div>
     </div>
 </div>

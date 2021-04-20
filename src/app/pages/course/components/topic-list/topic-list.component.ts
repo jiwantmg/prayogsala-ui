@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
 import { CourseVideoComponent } from '../course-video/course-video.component';
 import { PreviewVideoComponent } from '../preview-video/preview-video.component';
+import { PurchaseCourseComponent } from '../purchase-course/purchase-course.component';
 
 @Component({
   selector: 'app-topic-list',
@@ -13,6 +14,7 @@ import { PreviewVideoComponent } from '../preview-video/preview-video.component'
 export class TopicListComponent implements OnInit {
   @Input("chapter") chapter: any;
   @Input("topics") topics: any[] = [];
+  @Input("paidStatus") paidStatus: any;
   utype: string = undefined;
   constructor(
     private matDialog: MatDialog,
@@ -32,13 +34,23 @@ export class TopicListComponent implements OnInit {
   }
 
   preview(topic) {
-    const dialog = this.matDialog.open(PreviewVideoComponent,{
-      data: {
-        video: topic.video
-      },
-      panelClass: 'mat-dialog-padding-0'
-    });     
- }
+    console.log(this.chapter);
+    console.log(this.paidStatus);
+    // check if user has paid for the course or not
+    if(this.utype == 'teacher'){
+
+    } else if(this.chapter.order != 1 && (!this.paidStatus || this.paidStatus.status != "purchased")){
+      this.makePurchase();
+      return;
+    }else{
+      const dialog = this.matDialog.open(PreviewVideoComponent,{
+        data: {
+          video: topic.video
+        },
+        panelClass: 'mat-dialog-padding-0'
+      });            
+    }
+  }
  
  uploadVideo(topic) {
   const dialog = this.matDialog.open(CourseVideoComponent,{
@@ -47,6 +59,16 @@ export class TopicListComponent implements OnInit {
       chapter: this.chapter
     }
   });   
+ }
+
+ makePurchase()
+ {
+   const dialog = this.matDialog.open(PurchaseCourseComponent, {
+    data: {
+      chapter: this.chapter
+    },
+    panelClass: 'mat-dialog-padding-0'
+   });
  }
 
  deleteTopic(topic) {

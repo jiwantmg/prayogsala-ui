@@ -9,9 +9,11 @@ ul{
 
 .topic-list-item > .topic-link {
     text-decoration: none;
+    font-size: 1.1rem !important;
 }
 
 .disable-link {
   color: darkgray;
   pointer-events: none;
+  
 }

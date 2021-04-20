@@ -20,8 +20,8 @@ export class CourseService {
     });
   }
 
-  getAllCourse() {
-    return this.http.get(`${environment.server}/courses`);
+  getAllCourse(data) {      
+      return this.http.get(`${environment.server}/courses/${data.type}/all`);
   }
 
   getAllPublicCourse() {
@@ -64,7 +64,7 @@ export class CourseService {
   }
 
   enrollStudent(id: any) {
-    return this.http.get('');
+    return this.http.put(`${environment.server}/courses/enroll/${id}`,{});
   }
  
 }

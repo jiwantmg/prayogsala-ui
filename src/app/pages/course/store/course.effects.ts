@@ -15,7 +15,7 @@ export class CourseEffects {
     return this.actions$.pipe( 
 
       ofType(CourseActions.loadCourses),
-      concatMap(() => this.courseService.getAllCourse().pipe(
+      concatMap((action) => this.courseService.getAllCourse(action.data).pipe(
         map(
           res => CourseActions.loadCoursesSuccess({data: res})
         ),

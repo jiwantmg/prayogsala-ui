@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CourseByTeachersComponent } from './components/course-by-teachers/course-by-teachers.component';
+import { CourseByUserComponent } from './components/course-by-users/course-by-user.component';
 import { CourseRoutingModule } from './course-routing.module';
 import { NewCourseComponent } from './components/new-course/new-course.component';
 import { PmaterialModule } from '../pmaterial.module';
@@ -17,10 +17,11 @@ import { TopicListComponent } from './components/topic-list/topic-list.component
 import { CourseVideoComponent } from './components/course-video/course-video.component';
 import { PreviewVideoComponent } from './components/preview-video/preview-video.component';
 import { VgCoreModule, } from 'ngx-videogular';
+import { PurchaseCourseComponent } from './components/purchase-course/purchase-course.component';
 
 @NgModule({
   declarations: [
-    CourseByTeachersComponent,
+    CourseByUserComponent,
     NewCourseComponent,
     CourseDetailComponent,
     NewChapterComponent,
@@ -28,7 +29,8 @@ import { VgCoreModule, } from 'ngx-videogular';
     NewTopicComponent,
     TopicListComponent,
     CourseVideoComponent,
-    PreviewVideoComponent
+    PreviewVideoComponent,
+    PurchaseCourseComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,6 @@ import { VgCoreModule, } from 'ngx-videogular';
     StoreModule.forFeature(fromCourse.courseFeatureKey, fromCourse.reducer),
     EffectsModule.forFeature([CourseEffects])
   ],
-  exports: [CourseByTeachersComponent]
+  exports: [CourseByUserComponent]
 })
 export class CourseModule { }

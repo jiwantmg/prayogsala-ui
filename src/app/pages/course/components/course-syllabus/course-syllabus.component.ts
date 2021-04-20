@@ -11,6 +11,7 @@ import { NewTopicComponent } from '../new-topic/new-topic.component';
 export class CourseSyllabusComponent implements OnInit {
   step = -1;
   @Input("syllabus") syllabus: any[] = [];
+  @Input("paidStatus") paidStatus: any;
   utype: string = undefined;
 
   constructor(

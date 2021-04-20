@@ -25,6 +25,7 @@
     "@ngrx/store": "^11.1.0",
     "@ngrx/store-devtools": "^11.1.0",
     "bootstrap": "^4.6.0",
+    "khalti-checkout-web": "^2.2.0",
     "ngx-videogular": "^10.1.0-0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

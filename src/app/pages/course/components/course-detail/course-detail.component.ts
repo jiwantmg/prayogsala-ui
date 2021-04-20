@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
+import { PurchaseService } from 'src/app/core/services/purchase.service';
 import { NewChapterComponent } from '../new-chapter/new-chapter.component';
 
 @Component({
@@ -14,6 +15,7 @@ export class CourseDetailComponent implements OnInit {
   private sub: any;
   id: string = null;
   course: any = null;
+  paidStatus: any = null;
   syllabus: any[] = [];
   utype: string = undefined;
 
@@ -21,6 +23,7 @@ export class CourseDetailComponent implements OnInit {
     private matDialog: MatDialog,
     private route: ActivatedRoute,
     private courseService: CourseService,
+    private purchaseService: PurchaseService,
     private store: Store<{course, context}>
 
   ) { }
@@ -41,9 +44,10 @@ export class CourseDetailComponent implements OnInit {
   getCourse(){
     this.courseService.getCourse(this.id).subscribe(
       (response: any)=>{
-        this.course = response;
+        this.course = response.course;
+        this.paidStatus = response.paidStatus;
         //this.getSyllabus();
-        this.syllabus = response.chapters;        
+        this.syllabus = response.course.chapters;     
       },
       error=>{
         console.log(error); 
@@ -77,8 +81,15 @@ export class CourseDetailComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+
   }
 
+  isCoursePaid() {
+    return this.paidStatus.status === "purchased";
+  }
 
+  makePurchase()
+  {
+    this.purchaseService.makePurchase(this.course.courseId);
+  }
 }

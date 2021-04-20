@@ -40,7 +40,7 @@ export class CourseCardComponent implements OnInit {
   }
 
   getImageName(name){
-    return environment.server_url+'/uploads/'+name;
+    return environment.server_url+'Uploads/'+name;
   }
 
   viewCourse() {
@@ -48,16 +48,13 @@ export class CourseCardComponent implements OnInit {
   }
 
   enrollStudent() {
-    this.courserService.enrollStudent(this.course.id).subscribe(
+    this.courserService.enrollStudent(this.course.courseId).subscribe(
       response=>{
-        this.router.navigate(['courses/classroom', this.course.id]);
+        this.viewCourse();
       },
       error=>{
-        console.log(error);
+        alert("Something went wrong");
       }
     )    
   }
-
-
-
 }

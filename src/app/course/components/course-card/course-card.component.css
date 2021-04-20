@@ -46,9 +46,11 @@
     font-size: 1rem;
 }
 .course-card {
-    min-height: 250px;
+    min-height: 100%;
     width: 200px;
     background-color: #002b36;
+    display: flex;
+    flex-direction: column;
 }
 
 .course-card:not(:first-child) {
