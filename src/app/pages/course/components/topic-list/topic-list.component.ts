@@ -38,18 +38,24 @@ export class TopicListComponent implements OnInit {
     console.log(this.paidStatus);
     // check if user has paid for the course or not
     if(this.utype == 'teacher'){
-
+      this.previewVideo(topic);
     } else if(this.chapter.order != 1 && (!this.paidStatus || this.paidStatus.status != "purchased")){
       this.makePurchase();
       return;
     }else{
-      const dialog = this.matDialog.open(PreviewVideoComponent,{
-        data: {
-          video: topic.video
-        },
-        panelClass: 'mat-dialog-padding-0'
-      });            
+      this.previewVideo(topic);
     }
+  }
+
+  previewVideo(topic)
+  {
+    const dialog = this.matDialog.open(PreviewVideoComponent,{
+      data: {
+        topic: topic,
+        chapter: this.chapter
+      },
+      panelClass: 'full-screen-modal',      
+    });            
   }
  
  uploadVideo(topic) {
@@ -57,7 +63,8 @@ export class TopicListComponent implements OnInit {
     data: {
       topic: topic,
       chapter: this.chapter
-    }
+    },
+    width: '100%'    
   });   
  }
 

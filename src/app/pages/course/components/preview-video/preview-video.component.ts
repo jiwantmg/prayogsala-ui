@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,8 +9,10 @@ import { environment } from 'src/environments/environment';
 })
 export class PreviewVideoComponent implements OnInit {
   imageServer: string;
+  displayChat = false;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<PreviewVideoComponent>
   ) { }
 
   ngOnInit() {
@@ -20,6 +22,19 @@ export class PreviewVideoComponent implements OnInit {
   getVideoLink() {
     return 'https://youtu.be/zetw6ODNHD4';
     //return 'http://localhost/video/'+this.data.video;
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+
+  toggleComments() {
+    this.displayChat = !this.displayChat;
+  }
+
+  getwidth()
+  {
+    return this.displayChat ? '100%' : 'auto';
   }
 
 }

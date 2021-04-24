@@ -53,7 +53,9 @@ export class CourseCardComponent implements OnInit {
         this.viewCourse();
       },
       error=>{
-        alert("Something went wrong");
+        if(error.error) {
+          alert(error.error.message);
+        }
       }
     )    
   }

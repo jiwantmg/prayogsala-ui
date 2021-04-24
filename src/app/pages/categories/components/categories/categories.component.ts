@@ -24,10 +24,13 @@ export class CategoriesComponent implements OnInit {
     );    
   }
 
-  addNew()
+  openForm(category)
   {
     this.dialog.open(CategoryFormComponent, {
-      panelClass: 'bg-dark'
+      panelClass: 'bg-dark',
+      data: {
+        category
+      }
     });
   }
 

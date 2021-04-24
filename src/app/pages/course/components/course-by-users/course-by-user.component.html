@@ -11,7 +11,7 @@
                         <li (click)="gotoCourse(course.courseId)" class="list-group-item list-item-active-zoom d-flex justify-content-between align-items-center main-bg-color" *ngFor="let course of courses">
                           {{ course.courseTitle }}
                           <span class="badge badge-primary badge-pill">{{ course.studentCount }}</span>
-                          <div>{{ course.courseStudents.length > 0 ? course.courseStudents[0].status : 'Not enrolled'  }}</div>
+                          <div *ngIf="user.role == 'student'">{{ course.courseStudents.length > 0 ? course.courseStudents[0].status : 'Not enrolled'  }}</div>
                         </li>  
                       </ul>
                 </div>

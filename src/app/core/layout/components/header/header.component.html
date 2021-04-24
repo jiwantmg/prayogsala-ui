@@ -1,15 +1,17 @@
-   <!-- Header area start -->
-   <nav class="navbar navbar-expand-lg main-heading-bg">
-    <a class="navbar-brand" routerLink="/">PRAYOGSALA</a>    
+<!-- Header area start -->
+<nav class="navbar navbar-expand-lg main-heading-bg top-heading">
+    <a class="navbar-brand" routerLink="/">PRAYOGSALA</a>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown" [ngClass]="{'show': isCourseShow}">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="isCourseShow = !isCourseShow">
-              Categories
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" (click)="isCourseShow = !isCourseShow">
+                Categories
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" [ngClass]="{'show': isCourseShow}">
-              <a *ngFor="let category of categories" class="dropdown-item" [routerLink]="category.link">{{ category.name }}</a>              
+                <a *ngFor="let category of categories" class="dropdown-item"
+                    (click)="openLink('/category/'+category.link)">{{ category.name }}</a>
             </div>
-          </li>
+        </li>
     </ul>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -17,12 +19,12 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <form class="d-flex search-input">
-            <input class="form-control search-input-text" type="search" placeholder="Search" aria-label="Search">           
-          </form>
+        <div class="d-flex search-input">
+            <input class="form-control search-input-text" type="search" placeholder="Search" aria-label="Search" (keydown)="searchCourse($event)" [(ngModel)]="searchString">
+        </div>
         <ul class="navbar-nav  ml-auto" *ngIf="isUserLoggedIn; else loginTemplate">
             <li class="nav-item active" *ngFor="let menu of menus">
-                <a class="nav-link menu-link" [routerLink]="menu.link">{{ menu.name }}</a>
+                <a class="nav-link menu-link text-center" [routerLink]="menu.link">{{ menu.name }}</a>
             </li>
 
             <li class="nav-item">
@@ -37,5 +39,5 @@
                 </div>
             </div>
         </ng-template>
-    </div>    
+    </div>
 </nav>

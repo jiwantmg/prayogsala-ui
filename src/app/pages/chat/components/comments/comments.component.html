@@ -1,0 +1,14 @@
+<ul class="list-unstyled text-white">
+    <li>
+        <app-comment-card [topic]="topic" (onEventAdd)="loadComments()"></app-comment-card>
+    </li>
+    <li class="media" *ngFor="let comment of comments">
+        <div class="profile">
+            <span>AB</span>
+        </div>
+        <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ comment.user.firstName + ' ' + comment.user.lastName }}</h5>
+            {{ comment.text }}
+        </div>
+    </li>    
+</ul>

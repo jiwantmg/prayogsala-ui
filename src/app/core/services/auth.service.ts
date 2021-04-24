@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +26,13 @@ export class AuthService {
     return this.http.get(`${environment.server}/users/role`);
   }
 
-  addTeacher(teacher) {
+  addOrUpdateTeacher(teacher) {
+    // check if this is new or old
+    if(teacher.userId != -1)
+    {
+      return this.http.put(`${environment.server}/teachers`, teacher);
+    }
+
     return this.http.post(`${environment.server}/teachers`, teacher);
   }
 }

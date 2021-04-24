@@ -1,0 +1,13 @@
+.profile {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #1b444c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.media {
+    padding: 5px;
+    border: 1px solid #1b444c
+}

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseService } from 'src/app/core/services/course.service';
 
@@ -11,9 +11,9 @@ import { CourseService } from 'src/app/core/services/course.service';
 export class NewTopicComponent implements OnInit {
   step1 = true;
   step2 = false;
-  order: FormControl = new FormControl([''], Validators.required);
-  topic: FormControl = new FormControl([''], Validators.required);
+  form: FormGroup;  
   chapter: any;
+  submited = false;
   constructor(
     private matDialogRef: MatDialogRef<NewTopicComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
@@ -24,7 +24,16 @@ export class NewTopicComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.form = new FormGroup({
+      order: new FormControl('', Validators.required),
+      topic: new FormControl('', Validators.required)
+    });
     this.setStep1();
+  }
+
+  get formControl()
+  {
+    return this.form.controls;
   }
 
   setStep1(){
@@ -38,10 +47,10 @@ export class NewTopicComponent implements OnInit {
   }
 
   save(){
-    this.courseService.saveTopic({
-      order: this.order.value,
-      topic: this.topic.value
-    },this.chapter.courseId,this.chapter.chapterId).subscribe(
+    this.submited = true;
+    if(this.form.invalid) return;
+    let { order, topic } = this.form.value;
+    this.courseService.saveTopic({ order, topic},this.chapter.courseId,this.chapter.chapterId).subscribe(
       response=>{
         this.matDialogRef.close(true);
       },

@@ -1,0 +1,6 @@
+<div class="course-preview-section">
+    <h5>All Courses</h5>
+    <div class="course-card-list d-flex">
+        <app-course-card [course]='course' [is_enrolled]="false" *ngFor="let course of courses"></app-course-card>
+    </div>
+</div>

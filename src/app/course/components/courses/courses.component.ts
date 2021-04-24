@@ -8,7 +8,7 @@ import { CourseService } from 'src/app/core/services/course.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  courses = [];
+  categories = [];
   utype: string[] = [];
   constructor(
     private courseService: CourseService,
@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit() {
     this.courseService.getAllPublicCourse().subscribe(
       (response: any) => {
-        this.courses = response;
+        this.categories = response;
       },
       error=>{
         console.log(error);

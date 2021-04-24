@@ -1,0 +1,32 @@
+:host {
+    height: 100%;
+}
+
+.preview-video {
+    height: 100%;    
+    display: grid;
+    grid-template-rows: 40px;
+}
+.video-title {
+    display: flex;
+    color: white;    
+    align-items: center;
+}
+
+
+vg-player video{
+    margin: auto;    
+}
+
+.w-auto > video {
+    width: auto;
+}
+
+.overflow-hover-auto {
+    max-height: 95vh;
+    overflow: hidden;
+}
+
+.overflow-hover-auto:hover {    
+    overflow-y: auto;
+}

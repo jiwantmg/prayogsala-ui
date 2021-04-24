@@ -28,9 +28,17 @@ import { AuthGuard } from "./core/auth/_guard/auth.guard";
                 loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
               },
               {
+                path: 'category',
+                loadChildren: () => import('./course/course.module').then(m => m.CourseModule)
+              },
+              {
                 path: 'pages',
                 loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
                 canActivate: [AuthGuard]               
+              },
+              {
+                path: 'search',
+                loadChildren: () => import('./search/search.module').then(m => m.SearchModule)
               }
         ])
     ],

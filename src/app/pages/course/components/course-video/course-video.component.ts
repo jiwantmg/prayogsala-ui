@@ -15,6 +15,7 @@ export class CourseVideoComponent implements OnInit {
   status: string = "";
   @Input("chapter") chapter: any;
   @Input("topic") topic: string = "";
+  submited = false;
   constructor(    
     private activatedRoute: ActivatedRoute,
     private courseService: CourseService,
@@ -34,6 +35,8 @@ export class CourseVideoComponent implements OnInit {
   }
 
   onUpload() {    
+    this.submited = true;    
+    if(!this.selectedFile) return;
     this.courseService.uploadVideo(this.chapter,this.selectedFile, this.topic).subscribe(
       response=>{
         if(response.type === HttpEventType.UploadProgress){

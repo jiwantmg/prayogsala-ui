@@ -25,7 +25,7 @@ export class CourseService {
   }
 
   getAllPublicCourse() {
-    return this.http.get(`${environment.server}/public/courses`);
+    return this.http.get(`${environment.server}/categories/courses/tops`);
   }
   
 
@@ -65,6 +65,10 @@ export class CourseService {
 
   enrollStudent(id: any) {
     return this.http.put(`${environment.server}/courses/enroll/${id}`,{});
+  }
+
+  searchFor(string: string) {
+    return this.http.get(`${environment.server}/courses/search?query=${string}`);
   }
  
 }

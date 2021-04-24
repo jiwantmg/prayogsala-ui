@@ -11,7 +11,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 export class NewChapterComponent implements OnInit {
 
   form: FormGroup;
-  
+  submited = false;
   constructor(
     private fb: FormBuilder,
     private courserService: CourseService,
@@ -21,13 +21,20 @@ export class NewChapterComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      order: ['', Validators.required],
+      order: [0, Validators.required],
       chapter: ['', Validators.required]
     });
     console.log(this.data);
   }
 
+  get formControl()
+  {
+    return this.form.controls;
+  }
+
   save() {
+    this.submited = true;
+    if(this.form.invalid) return;
     this.courserService.createChapter(this.form.value, this.data).subscribe(
       response=>{
         this.matDialogRef.close(true);
@@ -37,6 +44,4 @@ export class NewChapterComponent implements OnInit {
       }
     )
   }
-
-
 }

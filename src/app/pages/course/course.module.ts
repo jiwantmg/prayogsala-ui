@@ -18,6 +18,7 @@ import { CourseVideoComponent } from './components/course-video/course-video.com
 import { PreviewVideoComponent } from './components/preview-video/preview-video.component';
 import { VgCoreModule, } from 'ngx-videogular';
 import { PurchaseCourseComponent } from './components/purchase-course/purchase-course.component';
+import { ChatModule } from '../chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,12 @@ import { PurchaseCourseComponent } from './components/purchase-course/purchase-c
     ReactiveFormsModule,
     VgCoreModule,
     StoreModule.forFeature(fromCourse.courseFeatureKey, fromCourse.reducer),
-    EffectsModule.forFeature([CourseEffects])
+    EffectsModule.forFeature([CourseEffects]),
+    ChatModule
   ],
-  exports: [CourseByUserComponent]
+  exports: [
+    CourseByUserComponent, 
+    PreviewVideoComponent
+  ]
 })
 export class CourseModule { }

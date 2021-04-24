@@ -36,9 +36,9 @@
 </div> -->
 <!--  -->
 
-<div class="course-preview-section">
-    <h3>Programming Courses</h3>
+<div class="course-preview-section" *ngFor="let category of categories">
+    <h3>{{ category.name }}</h3>
     <div class="course-card-list">
-        <app-course-card [course]='course' [is_enrolled]="false" *ngFor="let course of courses"></app-course-card>
+        <app-course-card [course]='course' [is_enrolled]="false" *ngFor="let course of category.courses"></app-course-card>
     </div>
 </div>

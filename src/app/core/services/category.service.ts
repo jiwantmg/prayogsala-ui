@@ -6,16 +6,26 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
- 
+
   constructor(
     private http: HttpClient
   ) {}
 
-  addNewCategory(data) {
-    return this.http.post(`${environment.server}/categories?name=${data.category}&link=${data.link}`, {});
+  addOrUpdateCategory(data) {    
+    if(data.id)
+    {
+      return this.http.put(`${environment.server}/categories/${data.id}`, data);
+    }else{
+      return this.http.post(`${environment.server}/categories`, data);
+    }    
   }
 
   getAllCategories() {
     return this.http.get(`${environment.server}/categories`);
   }
+
+  getCoursesByCategory(category: string) {
+    return this.http.get(`${environment.server}/categories/${category}/courses`);
+  }
+ 
 }

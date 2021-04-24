@@ -85,6 +85,7 @@ export class CourseDetailComponent implements OnInit {
   }
 
   isCoursePaid() {
+    if(!this.paidStatus) return false;
     return this.paidStatus.status === "purchased";
   }
 

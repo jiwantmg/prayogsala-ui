@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
 
@@ -9,11 +9,10 @@ import { CourseService } from 'src/app/core/services/course.service';
   templateUrl: './new-course.component.html',
   styleUrls: ['./new-course.component.css']
 })
-export class NewCourseComponent implements OnInit {
-  courseTitle: string = "";
-  selectedFile: File;
-  categories: any[] = [];
-  categoryId: any;
+export class NewCourseComponent implements OnInit {  
+  categories: any[] = [];  
+  form: FormGroup;
+  submited = false;
   constructor(
     public matDialogRef: MatDialogRef<NewCourseComponent>,
     private courseService: CourseService,
@@ -21,20 +20,27 @@ export class NewCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      courseTitle: new FormControl('', Validators.required),
+      selectedFile: new FormControl(null, Validators.required),
+      categoryId: new FormControl('', Validators.required),      
+    });
+
     this.store.select(state => state.categories).subscribe(
       (res) => {                          
        this.categories = res.list;       
       }
-    );   
+    );       
   }
 
   save()
-  {
-    console.log(this.courseTitle, this.selectedFile);
+  {    
+    this.submited = true;
+    if(this.form.invalid) return;
     let form = new FormData();
-    form.append("courseTitle", this.courseTitle);
-    form.append("thumbnail", this.selectedFile);
-    form.append("categoryId", this.categoryId);
+    form.append("courseTitle", this.form.get('courseTitle').value);
+    form.append("thumbnail", this.form.get('selectedFile').value);
+    form.append("categoryId", this.form.get('categoryId').value);
     this.courseService.addNewCourse(form).subscribe(
       res => {
         this.matDialogRef.close(true);
@@ -45,8 +51,12 @@ export class NewCourseComponent implements OnInit {
     )
   }
 
+  get formControl() {
+    return this.form.controls;
+  }
+
   fileSelected(event)
   {
-    this.selectedFile = event;
+    this.form.get('selectedFile').setValue(event);
   }
 }

@@ -10,13 +10,15 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    fname: new FormControl([''], Validators.required),
-    lname: new FormControl([''], Validators.required),
-    email: new   FormControl([''], Validators.required),
-    password  : new FormControl([''], Validators.required),
-    phone: new FormControl([''], Validators.required),
-    address: new FormControl([''], Validators.required),
+    fname: new FormControl('', Validators.required),
+    lname: new FormControl('', Validators.required),
+    email: new  FormControl('', Validators.required),
+    password  : new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required)
   });
+
+  submited = false;
 
   constructor(
     private authService: AuthService,
@@ -25,9 +27,16 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
+  get registerFormControl()
+  {
+    return this.form.controls;
+  }
 
   register()
   {
+    this.submited = true;    
+    if(this.form.invalid) return;
      this.authService.register(this.form.value).subscribe(
        res => {
         this.router.navigate(['/login']);
@@ -35,7 +44,7 @@ export class RegisterComponent implements OnInit {
        err => {
          console.error(err);
        }
-     )
+     );
   }
 
 }

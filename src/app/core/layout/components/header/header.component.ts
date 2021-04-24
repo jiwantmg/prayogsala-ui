@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Menu } from 'src/app/core/models/menu';
 import * as fromAuthStore from '../../../auth/store/auth.action';
 import * as fromCatStore from 'src/app/pages/categories/store/category.actions';
+import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +17,10 @@ export class HeaderComponent implements OnInit {
   isUserLoggedIn: false;
   isCourseShow = false;
   categories: any[] = [];  
+  searchString: string = "";
   constructor(
-    private store: Store<{context, categories}>
+    private store: Store<{context, categories}>,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ export class HeaderComponent implements OnInit {
   {
     this.menus.splice(0, this.menus.length);
     this.menus.push({
-      name: 'Course',
+      name: 'My Course',
       link: '/pages/courses',
       icon: ''
     });
@@ -82,4 +86,18 @@ export class HeaderComponent implements OnInit {
     this.isCourseShow = !this.isCourseShow;
   }
 
+  openLink(link)
+  {
+    this.router.navigate([link]);
+    this.isCourseShow = !this.isCourseShow;
+  }
+
+  searchCourse(event)
+  {    
+    if(this.searchString == "") return;
+    if(event.key == "Enter")
+    {
+      this.router.navigateByUrl(`/search?query=${this.searchString}`)
+    }
+  }
 }

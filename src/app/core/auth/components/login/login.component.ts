@@ -12,7 +12,8 @@ import * as authAction from '../../store/auth.action';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-
+  message: string = "";
+  submited = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -20,15 +21,24 @@ export class LoginComponent implements OnInit {
     private store: Store<{context}>
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.form = this.fb.group({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
   }
 
+  get loginFormControl()
+  {
+    return this.form.controls;
+  }
+
   save() {
-    let result = this.authService.login(this.form.value).subscribe(
+    this.submited = true;
+    // check if username or password is valid or invalid
+    if(!this.form.valid) return;
+    this.message = "";
+    this.authService.login(this.form.value).subscribe(
       (res: any)=> {
         localStorage.setItem('auth_token', res.token);
         localStorage.setItem('firstName', res.firstName);
@@ -36,18 +46,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email', res.email);
         this.store.dispatch(authAction.loginSuccessful({firstName: res.firstName, lastname: res.lastName, email: res.email}));
         this.store.dispatch(authAction.loadUserRole());
-        this.router.navigate(['/pages']);
+        this.router.navigate(['/course']);
       },
       err => {
-
+        console.log(err);
+        this.message = err ? err.error.message : ""
       }
-    )
-    if(result)
-    {
-      this.router.navigate(['pages/dashboard']);
-    }else{
-      alert("Username or password invalid");
-    }
+    )    
   }
 
 }
