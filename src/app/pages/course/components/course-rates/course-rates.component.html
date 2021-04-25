@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="rate">Add New Rate</label>
+                <div class="d-flex">
+                    <input type="number" class="form-control" id="rate" formControlName="rate">
+                    <a class="btn btn-primary" (click)="save()">Save</a>
+                </div>
+            </div>
+        </form>
+        <table class="table table-sm">
+            <tr>
+                <th>Rate</th>
+                <th>Created On</th>
+            </tr>
+            <tr *ngFor="let rate of rates">
+                <td>{{ rate.rate }}</td>
+                <td>{{ rate.cratedAt | date }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

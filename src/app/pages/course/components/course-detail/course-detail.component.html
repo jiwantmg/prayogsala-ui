@@ -7,10 +7,11 @@
                 </div>
                 <div class="col-md-12">
                     <span class="m-2 pull-left text-success"><h3>Course Content</h3></span>
-                    <a class="btn btn-outline-primary pull-left" (click)="newChapter()" *ngIf="utype=='teacher'">New Content</a>
+                    <a class="btn btn-primary pull-left" (click)="newChapter()" *ngIf="utype=='teacher'">New Chapter</a>
+                    <a class="btn btn-success pull-left" (click)="productRate()" *ngIf="utype=='teacher'">Rates</a>
                 </div>
             </div>
-            <app-course-syllabus [syllabus]="syllabus" [paidStatus]="paidStatus"></app-course-syllabus>         
+            <app-course-syllabus [course]="course" [syllabus]="syllabus" [paidStatus]="paidStatus"></app-course-syllabus>         
         </div>
         <div class="col-md-3">
             <!-- check if course is paid or not             -->

@@ -29,10 +29,13 @@
     <div class="card-body p-1">
         <h5 class="card-title">{{ course.courseTitle }}</h5>
     </div>
+    <div class="px-1 text-success font-weight-bold">
+        Rs: <span> {{ course.rates && course.rates.length > 0 ? course.rates[0].rate : '-'}}</span>
+    </div>
     <div class="card-footer">
         <small>Last updated 3 mins ago</small>
         <!-- <a class="btn btn-info btn-sm" (click)="enrollStudent()" *ngIf="utype=='teacher'">View</a> -->
-        <a class="btn btn-info btn-sm" (click)="viewCourse()" *ngIf="utype=='student'">View</a>
+        <a class="btn btn-info btn-sm" (click)="viewCourse()">View</a>
         <a class="btn btn-info btn-sm" (click)="enrollStudent()">Enroll</a>
     </div>
 </div>

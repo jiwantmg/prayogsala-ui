@@ -12,6 +12,7 @@ import { PurchaseCourseComponent } from '../purchase-course/purchase-course.comp
   styleUrls: ['./topic-list.component.css']
 })
 export class TopicListComponent implements OnInit {
+  @Input("course") course: any;
   @Input("chapter") chapter: any;
   @Input("topics") topics: any[] = [];
   @Input("paidStatus") paidStatus: any;
@@ -70,9 +71,13 @@ export class TopicListComponent implements OnInit {
 
  makePurchase()
  {
+   // check if it has rate or not   
+   if(!this.course.rates || this.course.rates.length <= 0) return;
+
    const dialog = this.matDialog.open(PurchaseCourseComponent, {
     data: {
-      chapter: this.chapter
+      chapter: this.chapter,
+      rate: this.course.rates[0].rate * 100
     },
     panelClass: 'mat-dialog-padding-0'
    });

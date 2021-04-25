@@ -21,7 +21,7 @@ export class PurchaseCourseComponent implements OnInit {
   }
 
   makePayment() {
-    this.purchaseService.makePurchase(this.data.chapter.courseId);
+    this.purchaseService.makePurchase(this.data.chapter.courseId, this.data.rate);
   }
 
   close() {

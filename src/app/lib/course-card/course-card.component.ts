@@ -17,7 +17,8 @@ export class CourseCardComponent implements OnInit {
     price: 0,
     thumbnail: '',
     description: '',
-    requirement: ''
+    requirement: '',
+    rates: []
   };
 
   @Input("is_enrolled") is_enrolled;
@@ -33,10 +34,11 @@ export class CourseCardComponent implements OnInit {
   ngOnInit() {
     this.store.select(state => state.context).subscribe(
       res => {
-        console.log(res);
         this.utype = res.auth.user.role;
       }
-    )
+    );
+
+    console.log(this.course);
   }
 
   getImageName(name){

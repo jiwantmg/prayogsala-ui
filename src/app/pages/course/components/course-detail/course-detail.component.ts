@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
 import { PurchaseService } from 'src/app/core/services/purchase.service';
+import { CourseRatesComponent } from '../course-rates/course-rates.component';
 import { NewChapterComponent } from '../new-chapter/new-chapter.component';
 
 @Component({
@@ -91,6 +92,17 @@ export class CourseDetailComponent implements OnInit {
 
   makePurchase()
   {
-    this.purchaseService.makePurchase(this.course.courseId);
+    if(!this.course.rates || this.course.rates.length <= 0) return;
+    this.purchaseService.makePurchase(this.course.courseId, this.course.rates[0].rate * 100);
+  }
+  productRate()
+  {
+    this.matDialog.open(CourseRatesComponent, {      
+      minWidth: '200px',
+      panelClass: 'mat-dialog-padding-0',
+      data: {
+        courseId: this.course.courseId
+      }
+    });
   }
 }

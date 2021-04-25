@@ -52,10 +52,10 @@ export class PurchaseService {
   constructor() {        
   }
 
-  makePurchase(courseId)
+  makePurchase(courseId, rate: number)
   {
     this.config.productIdentity = courseId;
     this.checkout = new KhaltiCheckout(this.config);
-    this.checkout.show({ amount: 10 });
+    this.checkout.show({ amount: rate });
   }
 }

@@ -19,6 +19,7 @@ import { PreviewVideoComponent } from './components/preview-video/preview-video.
 import { VgCoreModule, } from 'ngx-videogular';
 import { PurchaseCourseComponent } from './components/purchase-course/purchase-course.component';
 import { ChatModule } from '../chat/chat.module';
+import { CourseRatesComponent } from './components/course-rates/course-rates.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ChatModule } from '../chat/chat.module';
     TopicListComponent,
     CourseVideoComponent,
     PreviewVideoComponent,
-    PurchaseCourseComponent
+    PurchaseCourseComponent,
+    CourseRatesComponent
   ],
   imports: [
     CommonModule,

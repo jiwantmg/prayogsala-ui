@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CourseService {
-
+    
   constructor(
     private http: HttpClient
   ) { }
@@ -71,4 +71,11 @@ export class CourseService {
     return this.http.get(`${environment.server}/courses/search?query=${string}`);
   }
  
+  getCourseRates(courseId: number) {
+    return this.http.get(`${environment.server}/courses/${courseId}/rates`);
+  }
+
+  addNewRateForCourse(rate: { courseId: number; rate: number; }) {
+    return this.http.post(`${environment.server}/courses/${rate.courseId}/rates`, rate);
+  }
 }

@@ -13,7 +13,7 @@
             </mat-panel-description>            
         </mat-expansion-panel-header>
         <div class="border-top">        
-            <app-topic-list [topics]="s.topics" [chapter]="s" [paidStatus]="paidStatus"></app-topic-list>
+            <app-topic-list [course]="course" [topics]="s.topics" [chapter]="s" [paidStatus]="paidStatus"></app-topic-list>
             <a href="javascript:void(0)" color="warn" (click)="openNewTopic(s)" *ngIf="utype=='teacher'">Add New</a>
         </div>  
         <mat-action-row>                
