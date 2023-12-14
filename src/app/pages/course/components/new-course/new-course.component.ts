@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { CourseService } from 'src/app/core/services/course.service';
@@ -11,7 +11,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 })
 export class NewCourseComponent implements OnInit {  
   categories: any[] = [];  
-  form: FormGroup;
+  form: UntypedFormGroup;
   submited = false;
   constructor(
     public matDialogRef: MatDialogRef<NewCourseComponent>,
@@ -20,10 +20,10 @@ export class NewCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      courseTitle: new FormControl('', Validators.required),
-      selectedFile: new FormControl(null, Validators.required),
-      categoryId: new FormControl('', Validators.required),      
+    this.form = new UntypedFormGroup({
+      courseTitle: new UntypedFormControl('', Validators.required),
+      selectedFile: new UntypedFormControl(null, Validators.required),
+      categoryId: new UntypedFormControl('', Validators.required),      
     });
 
     this.store.select(state => state.categories).subscribe(

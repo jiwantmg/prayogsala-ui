@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseService } from 'src/app/core/services/course.service';
 
@@ -11,7 +11,7 @@ import { CourseService } from 'src/app/core/services/course.service';
 export class NewTopicComponent implements OnInit {
   step1 = true;
   step2 = false;
-  form: FormGroup;  
+  form: UntypedFormGroup;  
   chapter: any;
   submited = false;
   constructor(
@@ -24,9 +24,9 @@ export class NewTopicComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      order: new FormControl('', Validators.required),
-      topic: new FormControl('', Validators.required)
+    this.form = new UntypedFormGroup({
+      order: new UntypedFormControl('', Validators.required),
+      topic: new UntypedFormControl('', Validators.required)
     });
     this.setStep1();
   }

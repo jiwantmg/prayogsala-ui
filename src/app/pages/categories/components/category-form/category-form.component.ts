@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { CategoryService } from 'src/app/core/services/category.service';
@@ -11,7 +11,7 @@ import * as fromCatStore from 'src/app/pages/categories/store/category.actions';
   styleUrls: ['./category-form.component.css']
 })
 export class CategoryFormComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   submited = false;
   constructor(
     public matDialogRef: MatDialogRef<CategoryFormComponent>,
@@ -21,10 +21,10 @@ export class CategoryFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      category: new FormControl('', Validators.required),
-      link: new FormControl('', Validators.required),
-      displayHome: new FormControl(false)
+    this.form = new UntypedFormGroup({
+      category: new UntypedFormControl('', Validators.required),
+      link: new UntypedFormControl('', Validators.required),
+      displayHome: new UntypedFormControl(false)
     });
     // check if this is update form
     if(this.data.category)

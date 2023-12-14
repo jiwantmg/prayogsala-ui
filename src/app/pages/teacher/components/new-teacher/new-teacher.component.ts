@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -11,14 +11,14 @@ import * as teacherAction from '../../store/teacher.actions';
   styleUrls: ['./new-teacher.component.css']
 })
 export class NewTeacherComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    userId: new FormControl(-1, Validators.required),
-    fname: new FormControl('', Validators.required),
-    lname: new FormControl('', Validators.required),
-    email: new   FormControl('', Validators.required),
-    password  : new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    userId: new UntypedFormControl(-1, Validators.required),
+    fname: new UntypedFormControl('', Validators.required),
+    lname: new UntypedFormControl('', Validators.required),
+    email: new   UntypedFormControl('', Validators.required),
+    password  : new UntypedFormControl('', Validators.required),
+    phone: new UntypedFormControl('', Validators.required),
+    address: new UntypedFormControl('', Validators.required),
   });
   constructor(
     private authService: AuthService,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    fname: new FormControl('', Validators.required),
-    lname: new FormControl('', Validators.required),
-    email: new  FormControl('', Validators.required),
-    password  : new FormControl('', Validators.required),
-    phone: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required)
+  form: UntypedFormGroup = new UntypedFormGroup({
+    fname: new UntypedFormControl('', Validators.required),
+    lname: new UntypedFormControl('', Validators.required),
+    email: new  UntypedFormControl('', Validators.required),
+    password  : new UntypedFormControl('', Validators.required),
+    phone: new UntypedFormControl('', Validators.required),
+    address: new UntypedFormControl('', Validators.required)
   });
 
   submited = false;

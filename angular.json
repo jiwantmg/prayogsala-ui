@@ -117,9 +117,10 @@
       }
     }
   },
-  "defaultProject": "prayogsala-ui",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@ngrx/schematics"
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }

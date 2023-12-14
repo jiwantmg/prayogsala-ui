@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseService } from 'src/app/core/services/course.service';
 
@@ -11,8 +11,8 @@ import { CourseService } from 'src/app/core/services/course.service';
 export class CourseRatesComponent implements OnInit {
   rates: any[] = [];
   courseId: number;
-  form: FormGroup = new FormGroup({
-    rate: new FormControl(0, Validators.required)
+  form: UntypedFormGroup = new UntypedFormGroup({
+    rate: new UntypedFormControl(0, Validators.required)
   });
   submited = false;
   constructor(

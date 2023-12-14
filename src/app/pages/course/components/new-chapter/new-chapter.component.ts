@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseService } from 'src/app/core/services/course.service';
 
@@ -10,10 +10,10 @@ import { CourseService } from 'src/app/core/services/course.service';
 })
 export class NewChapterComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   submited = false;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private courserService: CourseService,
     @Inject(MAT_DIALOG_DATA) private data: number,
     private matDialogRef: MatDialogRef<NewChapterComponent>
