@@ -29,7 +29,8 @@ import {CategoryEffects} from 'src/app/pages/categories/store/category.effects';
       maxAge: 25,
       logOnly: environment.production      
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [
     {

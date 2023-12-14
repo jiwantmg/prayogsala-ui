@@ -12,21 +12,18 @@ import { EffectsModule } from '@ngrx/effects';
 import { TeacherEffects } from './store/teacher.effects';
 
 @NgModule({
-  declarations: [
-    TeacherComponent,
-    TeachersComponent,
-    NewTeacherComponent
-  ],
-  imports: [
-    CommonModule,
-    TeacherRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    StoreModule.forFeature(teacherStore.teacherFeatureKey, teacherStore.reducer),
-    EffectsModule.forFeature([TeacherEffects])
-  ],
-  entryComponents: [
-    NewTeacherComponent
-  ]
+    declarations: [
+        TeacherComponent,
+        TeachersComponent,
+        NewTeacherComponent
+    ],
+    imports: [
+        CommonModule,
+        TeacherRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        StoreModule.forFeature(teacherStore.teacherFeatureKey, teacherStore.reducer),
+        EffectsModule.forFeature([TeacherEffects])
+    ]
 })
 export class TeacherModule { }
