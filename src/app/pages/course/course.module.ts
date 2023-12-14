@@ -16,7 +16,7 @@ import { NewTopicComponent } from './components/new-topic/new-topic.component';
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { CourseVideoComponent } from './components/course-video/course-video.component';
 import { PreviewVideoComponent } from './components/preview-video/preview-video.component';
-import { VgCoreModule, } from 'ngx-videogular';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { PurchaseCourseComponent } from './components/purchase-course/purchase-course.component';
 import { ChatModule } from '../chat/chat.module';
 import { CourseRatesComponent } from './components/course-rates/course-rates.component';

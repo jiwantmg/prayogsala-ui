@@ -12,3 +12,7 @@
 .top-heading {
     height: 70px;
 }
+
+.navbar-brand {
+    font-weight: bold;
+}

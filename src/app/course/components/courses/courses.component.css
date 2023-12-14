@@ -14,7 +14,7 @@
 .course-card {
     height: 250px;
     width: 200px;
-    background-color: #002b36;
+    background-color: #EEEEEE;
 }
 
 .course-card:not(:first-child) {
@@ -23,9 +23,7 @@
 
 
 /* FITLER BUTTONS */
-.btn-filter {
-    background-color: #003741;
-    color: white;
+.btn-filter {    
     font-weight: bold;
     margin: 0 2px;
 }

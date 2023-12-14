@@ -4,7 +4,7 @@ import { Menu } from 'src/app/core/models/menu';
 import * as fromAuthStore from '../../../auth/store/auth.action';
 import * as fromCatStore from 'src/app/pages/categories/store/category.actions';
 import { Router } from '@angular/router';
-import { ThisReceiver } from '@angular/compiler';
+import { logout } from 'src/app/store/app.actions';
 
 @Component({
   selector: 'app-header',
@@ -28,16 +28,16 @@ export class HeaderComponent implements OnInit {
    
    
     this.store.select(state => state).subscribe(
-      (res) => {        
-       this.user = res.context.auth.user;       
-       this.categories = res.categories.list;
+      (res) => {
+       this.user = res.context?.auth?.user;
+       this.categories = res.categories?.list;
        this.addRoleBasedMenu();
       }
     );    
     this.store.dispatch(fromCatStore.loadCategorys());
     this.store.select(state => state.context).subscribe(
       (res) => {        
-        this.isUserLoggedIn = res.auth.isLogggedIn;       
+        this.isUserLoggedIn = res?.auth?.isLogggedIn;       
       }
     );
 
@@ -57,8 +57,8 @@ export class HeaderComponent implements OnInit {
       name: 'My Course',
       link: '/pages/courses',
       icon: ''
-    });
-    if(this.user.role == "admin")
+    });    
+    if(this.user && this.user.role == "admin")
     {
       this.menus.push({
         name: 'Teachers',
@@ -77,8 +77,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('firstName');
     localStorage.removeItem('lastName');
-    localStorage.removeItem('email');
-    window.location.reload();
+    localStorage.removeItem('email');    
+    this.store.dispatch(logout());
   }
 
   toggleCourse()

@@ -1,16 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    background-color: #1b444c !important;
-    color: white !important;
-}
-
-.main-bg-color {
-    background-color: #002b36 !important;    
-}
-
-.main-heading-bg {
-    background-color: #003741;
-}
 
 .content-wrapper {
     margin: 0 2rem;
@@ -18,20 +6,6 @@ body {
 
 .login-form .text-title {
     font-weight: bold;
-}
-
-.nav-link {
-    color: white;
-}
-.navbar-brand {
-    color: white;
-    font-weight: bold;
-}
-
-.course-preview-section {
-    background-color: #003741;
-    color: white;
-    padding: 0.5rem 0.8rem;
 }
 
 .preview-button {
@@ -53,16 +27,11 @@ body {
 
 .list-item-active-zoom:hover{
     cursor: pointer;
-    background-color: #03485a !important;
     font-weight: bold;
     transform: scale(1.001);
     transition: .15s linear;
 }
 
-.bg-dark > .mat-dialog-container {
-    background-color: black;
-    color: white;
-}
 
 .mat-dialog-padding-0 > .mat-dialog-container {
     padding: 0 !important;

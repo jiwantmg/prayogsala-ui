@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AuthModule } from './core/auth/auth.module';
@@ -7,12 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import * as appStore from './store/app.reducer'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
 import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
 import { JwtInterceptor } from './core/_helpers/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CategoryEffects} from 'src/app/pages/categories/store/category.effects';
+import { AuthEffects } from './core/auth/store/auth.effect';
 
 @NgModule({
   declarations: [
@@ -23,14 +23,10 @@ import {CategoryEffects} from 'src/app/pages/categories/store/category.effects';
     CoreModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot(appStore.reducers),
-    EffectsModule.forRoot([CategoryEffects]),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production      
-    }),
+    StoreModule.forRoot(appStore.reducers, { metaReducers: appStore.metaReducers }), 
+    EffectsModule.forRoot([CategoryEffects, AuthEffects]),
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {})
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     {

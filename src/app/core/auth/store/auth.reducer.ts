@@ -1,8 +1,7 @@
-import { state } from "@angular/animations";
-import { ActionReducer, createReducer, on } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import * as authActions from '../store/auth.action';
 
-const isUserLoggedIn = () => {
+const isUserLoggedIn = () => {    
     let token = localStorage.getItem('auth_token');
     return token ? true : false;
 }

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/auth.effect';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,7 @@ import { AuthEffects } from './store/auth.effect';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
-    EffectsModule.forFeature([AuthEffects])
+    RouterModule    
   ]
 })
 export class AuthModule { }

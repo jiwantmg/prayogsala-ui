@@ -10,7 +10,7 @@ import { AuthGuard } from "./core/auth/_guard/auth.guard";
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'course'
+                loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
               },
               {
                 path: 'login',
